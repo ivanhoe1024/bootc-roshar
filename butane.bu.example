@@ -1,0 +1,24 @@
+variant: fcos
+version: 1.6.0
+passwd:
+  users:
+    - name: USERNAME
+      ssh_authorized_keys:
+        - ssh-ed25519 AAAAC....
+      password_hash: YOUR_HASHED_PASSWD_HERE from here https://opensuse.github.io/fuel-ignition/
+      uid: UID
+      primary_group: USERNAME
+      groups:
+        - wheel
+        - sudo
+        - docker
+  groups:
+    - name: USERNAME
+      gid: GID
+storage:
+  files:
+    - path: /etc/hostname
+      mode: 420
+      overwrite: true
+      contents:
+        inline: HOSTNAME
