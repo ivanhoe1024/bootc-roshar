@@ -19,6 +19,9 @@ set -ouex pipefail
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
 
+dnf5 -y install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release terra-gpg-keys
+dnf5 -y chezmoi helix just starship yazi zellij zsh fzf zoxide firacode-nerd-fonts bat ncdu eza nnn btop trash-cli smartmontools borgmatic
+
 ### Enable Docker Service instead of podman socket
 # systemctl enable podman.socket
 systemctl enable docker.socket
