@@ -10,7 +10,7 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y tmux nnn docker-compose docker-buildx
+# dnf5 install -y tmux nnn docker-compose docker-buildx
 
 # Use a COPR Example:
 #
@@ -19,12 +19,6 @@ dnf5 install -y tmux nnn docker-compose docker-buildx
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
 
-#### Example for enabling a System Unit File
-
-# add tailscale repo
-curl --fail --retry 15 --retry-all-errors -sSL https://pkgs.tailscale.com/stable/fedora/tailscale.repo -o /etc/yum.repos.d/tailscale.repo
-dnf5 install -y tailscale
-
 ### Enable Docker Service instead of podman socket
 # systemctl enable podman.socket
-systemctl enable docker.service
+systemctl enable docker.socket
